@@ -11,13 +11,15 @@ int main()
 	push(a, 3);
 	push(a, 4);
 
+	/*swap_a(dual_stack);
 	swap_a(dual_stack);
-	swap_a(dual_stack);
-	swap_a(dual_stack);
+	swap_a(dual_stack);*/
+
+	push_b(dual_stack);
 
 	printf("%s", get_op_str(dual_stack));
-	//printf("%d", pop(dual_stack->a));
-	//printf("%d", pop(dual_stack->a));
+	printf("%d", pop(dual_stack->a));
+	printf("%d", pop(dual_stack->b));
 	destroy_dual_stack(dual_stack);
 	return 0;
 }

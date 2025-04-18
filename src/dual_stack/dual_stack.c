@@ -16,7 +16,7 @@ t_dual_stack	*init_dual_stack(t_stack *a, t_stack *b)
 	}
 	return (dual_stack);
 }
-void			destroy_dual_stack(t_dual_stack *dual_stack)
+void	destroy_dual_stack(t_dual_stack *dual_stack)
 {
 	if(!dual_stack)
 		return ;
