@@ -18,6 +18,6 @@ int main()
 	printf("%s", get_op_str(dual_stack));
 	//printf("%d", pop(dual_stack->a));
 	//printf("%d", pop(dual_stack->a));
-
+	destroy_dual_stack(dual_stack);
 	return 0;
 }
