@@ -6,11 +6,12 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:27:13 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/04/18 16:37:50 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/04/19 00:11:23 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef STACK_H
+# define STACK_H
 # include "../utils/bool.h"
 
 typedef struct t_node {
@@ -33,3 +34,5 @@ t_bool	is_empty(t_stack *stack);
 void	swap_top_two(t_stack *stack);
 void	rotate(t_stack *stack);
 void	reverse_rotate(t_stack *stack);
+
+#endif

@@ -6,7 +6,7 @@ void swap_top_two(t_stack *stack)
 	int	a;
 	int b;
 
-	if (isEmpty(stack) || stack->top->next == NULL)
+	if (is_empty(stack) || stack->top->next == NULL)
 		return ;
 	a = pop(stack);
 	b = pop(stack);
