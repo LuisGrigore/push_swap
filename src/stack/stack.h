@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:27:13 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/04/19 00:11:23 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/04/19 04:25:14 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct t_node {
 
 typedef struct t_stack {
     t_node* top;
+	int		size;
 } t_stack;
 
 t_stack	*init_stack();

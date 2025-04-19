@@ -5,6 +5,7 @@ t_stack *init_stack()
 {
 	t_stack *new_stack = malloc(sizeof(t_stack));
 	new_stack->top = NULL;
+	new_stack->size = 0;
 	return(new_stack);
 }
 

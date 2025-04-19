@@ -12,6 +12,7 @@ void	push(t_stack *stack, int element)
 	new_node->data = element;
 	new_node->next = stack->top;
 	stack->top = new_node;
+	stack->size ++;
 }
 int	pop(t_stack *stack)
 {
@@ -24,6 +25,7 @@ int	pop(t_stack *stack)
 	node_to_pop = stack->top;
 	stack->top = node_to_pop->next;
 	free(node_to_pop);
+	stack->size --;
 	return (element);
 }
 int	peek(t_stack *stack)
