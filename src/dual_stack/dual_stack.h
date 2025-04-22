@@ -11,6 +11,7 @@ typedef struct t_dual_stack
 
 t_dual_stack	*init_dual_stack(t_stack *a, t_stack *b);
 void			destroy_dual_stack(t_dual_stack *dual_stack);
+t_dual_stack *duplicate_dual_stack(t_dual_stack *original);
 char			*get_op_str(t_dual_stack *dual_stack);
 
 void			swap_a(t_dual_stack *dual_stack);

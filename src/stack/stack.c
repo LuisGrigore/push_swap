@@ -20,3 +20,18 @@ void destroy_stack(t_stack *stack)
 	}
 	free(stack);
 }
+
+t_stack *duplicate_stack(t_stack *original) {
+    if (!original)
+		return NULL;
+
+    t_stack *copy = init_stack();
+	t_node *current = original->bottom;
+    while(current)
+	{
+		push(copy, current->data);
+		current = current->previous;
+	}
+    return copy;
+}
+

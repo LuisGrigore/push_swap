@@ -26,6 +26,17 @@ void	destroy_dual_stack(t_dual_stack *dual_stack)
 	free (dual_stack);
 }
 
+t_dual_stack *duplicate_dual_stack(t_dual_stack *original) {
+    if (!original)
+		return NULL;
+
+    t_dual_stack *copy = malloc(sizeof(t_dual_stack));
+    copy->a = duplicate_stack(original->a);
+    copy->b = duplicate_stack(original->b);
+    copy->op_stack = duplicate_op_stack(original->op_stack);
+    return copy;
+}
+
 char	*get_op_str(t_dual_stack *dual_stack)
 {
 	return to_string(dual_stack->op_stack);

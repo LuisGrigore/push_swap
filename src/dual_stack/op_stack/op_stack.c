@@ -49,3 +49,21 @@ char *to_string(t_op_stack *op_stack)
 {
 	return (*op_stack);
 }
+
+t_op_stack *duplicate_op_stack(t_op_stack *original) {
+    if (!original) return NULL;
+
+    // Contar cuántos hay
+    int count = 0;
+    while (original[count])
+        count++;
+
+    t_op_stack *copy = malloc((count + 1) * sizeof(t_op_stack));
+
+    for (int i = 0; i < count; i++) {
+        copy[i] = ft_strdup(original[i]);
+    }
+    copy[count] = NULL; // Terminar con NULL como el original
+
+    return copy;
+}
