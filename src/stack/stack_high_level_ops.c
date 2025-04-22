@@ -3,57 +3,38 @@
 
 void swap_top_two(t_stack *stack)
 {
-	int	a;
-	int b;
-
-	if (is_empty(stack) || stack->top->next == NULL)
-		return ;
-	a = pop(stack);
-	b = pop(stack);
-	push(stack, a);
-	push(stack, b);
-}
-void rotate_aux(t_stack *stack, int *bottom)
-{
-	int top_val;
-
-	if (stack->top->next == NULL)
-	{
-		*bottom = pop(stack);
+	if (!stack || stack->size < 2)
 		return;
-	}
-	top_val = pop(stack);
-	rotate_aux(stack, bottom);
-	push(stack, top_val);
+
+	int tmp = stack->top->data;
+	stack->top->data = stack->top->next->data;
+	stack->top->next->data = tmp;
 }
 void rotate(t_stack *stack)
 {
-	int bottom;
-
-	if (!stack || !stack->top || !stack->top->next)
+	if (!stack || stack->size < 2)
 		return;
-	rotate_aux(stack, &bottom);
-	push(stack, bottom);
-}
-void reverse_rotate_aux(t_stack *stack, int top)
-{
-	int current;
 
-	if (!is_empty(stack))
-	{
-		current = pop(stack);
-		reverse_rotate_aux(stack, top);
-		push(stack, current);
-		return ;
-	}
-	push(stack, top);
+	t_node *first = stack->top;
+	stack->top = first->next;
+	stack->top->previous = NULL;
+
+	stack->bottom->next = first;
+	first->previous = stack->bottom;
+	first->next = NULL;
+	stack->bottom = first;
 }
 void reverse_rotate(t_stack *stack)
 {
-	int top;
-
-	if (!stack || is_empty(stack) || stack->top->next == NULL)
+	if (!stack || stack->size < 2)
 		return;
-	top = pop(stack);
-	reverse_rotate_aux(stack, top);
+
+	t_node *last = stack->bottom;
+	stack->bottom = last->previous;
+	stack->bottom->next = NULL;
+
+	last->previous = NULL;
+	last->next = stack->top;
+	stack->top->previous = last;
+	stack->top = last;
 }

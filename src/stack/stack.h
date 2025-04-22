@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:27:13 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/04/19 04:25:14 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/04/22 15:30:46 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@
 typedef struct t_node {
     int data;
     struct t_node* next;
+	struct t_node* previous;
 } t_node;
 
 typedef struct t_stack {
     t_node* top;
+	t_node* bottom;
 	int		size;
 } t_stack;
 
