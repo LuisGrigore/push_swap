@@ -9,6 +9,7 @@ t_dual_stack	*init_dual_stack(t_stack *a, t_stack *b)
 	dual_stack->a = a;
 	dual_stack->b = b;
 	dual_stack->op_stack = init_op_stack();
+	dual_stack->total_ops = 0;
 	if (!dual_stack->a || !dual_stack->b)
 	{
 		destroy_dual_stack(dual_stack);

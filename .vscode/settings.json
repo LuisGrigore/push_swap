@@ -6,6 +6,7 @@
 		"initializer_list": "c",
 		"stdbool.h": "c",
 		"stdlib.h": "c",
-		"move.h": "c"
+		"move.h": "c",
+		"string": "c"
 	}
 }

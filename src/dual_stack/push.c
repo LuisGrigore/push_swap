@@ -10,6 +10,7 @@ void	push_a(t_dual_stack *dual_stack)
 	b_top = pop(dual_stack->b);
 	push(dual_stack->a, b_top);
 	push_op(dual_stack->op_stack, "pa");
+	dual_stack->total_ops ++;
 }
 void	push_b(t_dual_stack *dual_stack)
 {
@@ -20,4 +21,5 @@ void	push_b(t_dual_stack *dual_stack)
 	a_top = pop(dual_stack->a);
 	push(dual_stack->b, a_top);
 	push_op(dual_stack->op_stack, "pb");
+	dual_stack->total_ops ++;
 }

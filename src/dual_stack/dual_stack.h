@@ -7,6 +7,7 @@ typedef struct t_dual_stack
 	t_stack *a;
 	t_stack *b;
 	t_op_stack *op_stack;
+	int		total_ops;
 } t_dual_stack;
 
 t_dual_stack	*init_dual_stack(t_stack *a, t_stack *b);
