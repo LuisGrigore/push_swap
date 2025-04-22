@@ -52,7 +52,7 @@ int calculate_b_rotation_cost(t_dual_stack *dual, int value)
 			current = current->next;
 			i++;
 		}
-		best_index = max_index + 1;
+		best_index = max_index;
 		if (best_index == b->size)
 			best_index = 0;
 	}
