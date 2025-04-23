@@ -48,18 +48,14 @@ t_bool	is_empty(t_stack *stack)
 
 int get_value_at_index(t_stack *stack, int index)
 {	
-	t_node *current;
-	int i;
+	t_node *current = stack->top;
+	int current_index = 0;
 
-	if (index <= stack->size / 2) {
-		current = stack->top;
-		for (i = 0; i < index; i++)
-			current = current->next;
-	} else {
-		current = stack->bottom;
-		for (i = stack->size - 1; i > index; i--)
-			current = current->previous;
+	while(current)
+	{
+		if (current_index == index)
+			return current->data;
+		current = current->next;
+		current_index ++;
 	}
-
-	return(current->data);
 }

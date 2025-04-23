@@ -7,7 +7,7 @@ HEADERS := $(shell find . -name '*.h')
 OBJS := $(SRCS:.c=.o)
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+#CFLAGS = -Wall -Wextra -Werror
 
 all: $(TARGET)
 

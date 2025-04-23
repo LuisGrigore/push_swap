@@ -35,6 +35,7 @@ t_dual_stack *duplicate_dual_stack(t_dual_stack *original) {
     copy->a = duplicate_stack(original->a);
     copy->b = duplicate_stack(original->b);
     copy->op_stack = duplicate_op_stack(original->op_stack);
+	copy->total_ops = original->total_ops;
     return copy;
 }
 

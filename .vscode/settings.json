@@ -7,6 +7,9 @@
 		"stdbool.h": "c",
 		"stdlib.h": "c",
 		"move.h": "c",
-		"string": "c"
+		"string": "c",
+		"*.tcc": "c",
+		"functional": "c",
+		"limits.h": "c"
 	}
 }

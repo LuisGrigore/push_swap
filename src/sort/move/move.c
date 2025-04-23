@@ -1,22 +1,24 @@
 #include "./move.h"
 #include "../../dual_stack/dual_stack.h"
+#include <stdio.h>
 
-void perform_move(t_dual_stack *state, int index) {
-    t_stack *a = state->a;
-    
-    int distance_to_top = index;
-    if (index > a->size / 2) {
-        distance_to_top = a->size - index;
-    }
-    
-    for (int i = 0; i < distance_to_top; i++) {
-        if (index > a->size / 2) {
-            reverse_rotate_a(state);
-        } else {
-            rotate_a(state);
-        }
-    }
-    push_b(state);
+void put_index_on_top_a(t_dual_stack *state, int index)
+{
+	if (index <= (state->a->size/2)-1)
+	{
+		while (index > 0)
+		{
+			rotate_a(state);
+			index --;
+		}
+		return;
+	}
+	index = state->a->size - index;
+	while (index > 0)
+	{
+		reverse_rotate_a(state);
+		index --;
+	}
 }
 
 int find_max_in_b(t_stack *b, int *index) {
@@ -34,96 +36,79 @@ int find_max_in_b(t_stack *b, int *index) {
     }
     return max_val;
 }
-/*
-void rotate_b_for_insert(t_dual_stack *state, int value) {
-    t_stack *b = state->b;
-    if (!b || b->size <= 1)
-        return;
 
+int find_min_in_b(t_stack *b, int *index) {
     t_node *current = b->top;
-    int best_index = 0;
+    int min_val = b->top->data;
+	int current_index = 0;
 
-	int max_val_index = 0;
-
-    // Si el valor es mayor que todos los valores en B, lo insertamos al inicio
-    if (value > find_max_in_b(b, &max_val_index)) {
-        best_index = max_val_index;
+    while (current) {
+        if (current->data < min_val) {
+            min_val = current->data;
+			*index = current_index;
+        }
+		current_index ++;
+        current = current->next;
     }
-    else {
-        // Buscar el lugar adecuado en B donde insertar el valor
-        while (current && current->next) {
-            if (value > current->data && value < current->next->data) {
-                break;
-            }
-            current = current->next;
-            best_index++;
-        }
+    return min_val;
+}
 
-        // Si el valor es menor que todos los valores de B, insertarlo al final
-        if (!current) {
-            best_index = b->size;
-        }
-    }
-
-    // Rotar B según el índice calculado
-    if (best_index <= b->size / 2) {
-        // Rotaciones hacia arriba (rb)
-        for (int i = 0; i < best_index; i++) {
-            rotate_b(state);
-        }
-    } else {
-        // Rotaciones hacia abajo (rrb)
-        for (int i = 0; i < b->size - best_index; i++) {
-            reverse_rotate_b(state);
-        }
-    }
-}*/
-
-void rotate_b_for_insert(t_dual_stack *state, int value) {
-	t_stack *b = state->b;
-	if (!b || b->size <= 1)
-		return;
-
-	t_node *current = b->top;
-	//int index = 0;
-	int best_index = 0;
-
-	// Caso por defecto: insertar después del valor máximo (el mayor reinicio en orden)
-	t_node *max_node = b->top;
-	int max_index = 0;
-
-	for (int i = 0; current && current->next; i++, current = current->next) {
-		if (current->data > max_node->data) {
-			max_node = current;
-			max_index = i;
-		}
-		if (value < current->data && value > current->next->data) {
-			best_index = i + 1;
-			break;
-		}
-	}
-
-	// Si no encontramos hueco, colocamos después del mayor
-	if (best_index == 0 && !(value < b->bottom->data && value > b->top->data))
-		best_index = max_index;
-
-	if (best_index >= b->size)
-		best_index = 0;
-
-	// Rotamos hacia arriba o abajo según convenga
-	if (best_index <= b->size / 2) {
-		for (int i = 0; i < best_index; i++)
+void put_index_on_top_b(t_dual_stack *state, int index)
+{
+	if (index <= state->b->size/2)
+	{
+		while (index > 0)
+		{
 			rotate_b(state);
-	} else {
-		for (int i = 0; i < b->size - best_index; i++)
-			reverse_rotate_b(state);
+			index --;
+		}
+		return;
+	}
+	index = state->b->size - index;
+	while (index > 0)
+	{
+		reverse_rotate_b(state);
+		index --;
 	}
 }
 
+int find_best_index(t_dual_stack *state, int value)
+{
+	int max_index = 0;
+	int max_val = find_max_in_b(state->b, &max_index);
+	
+	int min_index = 0;
+	int min_val = find_min_in_b(state->b, &min_index);
 
+	if (value > max_val || value < min_val)
+		return max_index;
+
+	int min_greater_than_value = min_val;
+	int current_index = 0;
+	int target_index = 0;
+	t_node *current = state->b->top;
+	while (current)
+	{
+		if (current->data < value && current->data >= min_greater_than_value)
+		{
+			min_greater_than_value = current->data;
+			target_index = current_index;
+		}
+		current_index ++;
+		current = current->next;
+	}
+	return target_index;
+}
+
+
+void rotate_b_for_insert(t_dual_stack *state, int value)
+{
+	put_index_on_top_b(state, find_best_index(state, value));
+}
 
 void move(t_dual_stack *dual, int index_in_a)
 {
 	rotate_b_for_insert(dual, get_value_at_index(dual->a, index_in_a));
-	perform_move(dual, index_in_a);
+	put_index_on_top_a(dual, index_in_a);
+	push_b(dual);
 }
