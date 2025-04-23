@@ -99,7 +99,7 @@ void set_result(t_dual_stack **result, t_dual_stack *new_result)
 
 	destroy_dual_stack(*result);
 	*result = duplicate_dual_stack(new_result);
-	//print(new_result);
+	print(new_result);
 }
 
 void gready_but_smart_aux(t_dual_stack *current_state, t_dual_stack **result, int current_depth, t_bool result_init)
@@ -119,7 +119,7 @@ void gready_but_smart_aux(t_dual_stack *current_state, t_dual_stack **result, in
 		result_init = TRUE;
 	}
 	int i = 0;
-	while (i < N_CANDIDATES && (candidates[i]->a->size > 0))
+	while (i < N_CANDIDATES && (candidates[i]->a->size > (N_CANDIDATES-1)))
 	{
 		gready_but_smart_aux(candidates[i], result, current_depth + 1, result_init);
 		i++;
