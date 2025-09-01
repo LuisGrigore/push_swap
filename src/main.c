@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 14:59:14 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/01 16:14:58 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/01 16:26:10 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,5 @@ int	main(int argc, char **argv)
 	stack = new_stack_from_char_values(argv, argc);
 	sort(&stack, argc - 1);
 	print_stack(stack);
+	free_stack(&stack);
 }

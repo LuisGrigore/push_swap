@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 15:01:55 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/01 15:26:08 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/01 16:44:03 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ typedef struct s_stack
 	int				value;
 	int				index;
 	int				position;
+	int				target;
+	int				cost_a;
+	int				cost_b;
 	struct s_stack	*next;
 }					t_stack;
 
