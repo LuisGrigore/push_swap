@@ -1,23 +1,37 @@
+# Compilador
+CC = gcc
+
+# Flags del compilador
+CFLAGS = -Wall -Wextra -Iincludes
+
+# Directorios
+SRC_DIR = src
+INC_DIR = includes
+OBJ_DIR = obj
+
+# Archivos
+SRC = $(wildcard $(SRC_DIR)/*.c)
+OBJ = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRC))
 TARGET = main
 
-SRCS := $(shell find . -name '*.c')
-
-HEADERS := $(shell find . -name '*.h')
-
-OBJS := $(SRCS:.c=.o)
-
-CC = gcc
-#CFLAGS = -Wall -Wextra -Werror
-
+# Regla por defecto
 all: $(TARGET)
 
-$(TARGET): $(OBJS)
-	$(CC) $(OBJS) -o $(TARGET)
+# Linkeo final
+$(TARGET): $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $^
 
-%.o: %.c $(HEADERS)
+# Compilar .c a .o
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-clean:
-	rm -f $(TARGET) $(OBJS)
+# Crear directorio obj si no existe
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
-.PHONY: all clean
+# Limpiar compilados
+clean:
+	rm -rf $(OBJ_DIR) $(TARGET)
+
+# Limpiar y recompilar
+re: clean all
