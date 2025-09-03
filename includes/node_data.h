@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   double_link_list_position.c                        :+:      :+:    :+:   */
+/*   node_data.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/03 14:55:58 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/03 15:01:08 by lgrigore         ###   ########.fr       */
+/*   Created: 2025/09/01 17:39:56 by lgrigore          #+#    #+#             */
+/*   Updated: 2025/09/03 16:45:37 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "double_link_list.h"
+#ifndef NODE_DATA_H
+# define NODE_DATA_H
 
-void	assign_position(t_double_link_list *list)
+typedef struct s_node_data
 {
-	t_dll_node *current;
-	int pos;
+	int		value;
+	int		index;
+	int		position;
+}			t_node_data;
 
-	current = list->head;
-	pos = 0;
-	while (current)
-	{
-		current->position = pos;
-		pos ++;
-		current = current->next;
-	}
-}
+t_node_data	*new_node_data(int value);
+void		free_node_data(void *node_data);
+
+#endif

@@ -6,18 +6,18 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 14:16:28 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/03 14:36:30 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/03 21:14:38 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "double_link_list.h"
 #include <stdlib.h>
 
-void	push_front(t_double_link_list *list, int value)
+void	push_front(t_double_link_list *list, void *data)
 {
 	t_dll_node	*node;
 
-	node = new_node(value);
+	node = new_node(data);
 	if (!node)
 		return ;
 	node->next = list->head;
@@ -29,11 +29,11 @@ void	push_front(t_double_link_list *list, int value)
 	list->size++;
 }
 
-void	push_back(t_double_link_list *list, int value)
+void	push_back(t_double_link_list *list, void *data)
 {
 	t_dll_node	*node;
 
-	node = new_node(value);
+	node = new_node(data);
 	if (!node)
 		return ;
 	node->prev = list->tail;
@@ -45,15 +45,15 @@ void	push_back(t_double_link_list *list, int value)
 	list->size++;
 }
 
-int	pop_front(t_double_link_list *list)
+void	*pop_front(t_double_link_list *list)
 {
 	t_dll_node	*tmp;
-	int			value;
+	void		*data;
 
 	if (list->size == 0)
 		return (0); // o error
 	tmp = list->head;
-	value = tmp->value;
+	data = tmp->data;
 	list->head = tmp->next;
 	if (list->head)
 		list->head->prev = NULL;
@@ -61,18 +61,18 @@ int	pop_front(t_double_link_list *list)
 		list->tail = NULL;
 	free_node(tmp);
 	list->size--;
-	return (value);
+	return (data);
 }
 
-int	pop_back(t_double_link_list *list)
+void	*pop_back(t_double_link_list *list)
 {
 	t_dll_node *tmp;
-	int value;
+	void *data;
 
 	if (list->size == 0)
 		return (0); // o error
 	tmp = list->tail;
-	value = tmp->value;
+	data = tmp->data;
 	list->tail = tmp->prev;
 	if (list->tail)
 		list->tail->next = NULL;
@@ -80,5 +80,5 @@ int	pop_back(t_double_link_list *list)
 		list->head = NULL;
 	free_node(tmp);
 	list->size--;
-	return (value);
+	return (data);
 }

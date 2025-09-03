@@ -6,12 +6,13 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 15:43:56 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/03 14:01:58 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/03 21:35:15 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "util.h"
 #include <unistd.h>
+#include <stdlib.h>
 
 void	ft_putstr(char *str)
 {
@@ -52,4 +53,17 @@ long int	ft_atoi(const char *str)
 		i++;
 	}
 	return (nb * isneg);
+}
+
+void error()
+{
+	write(2, "Error\n", 6);
+	exit(1);
+}
+
+int	abs(int nb)
+{
+	if (nb < 0)
+		return (nb * -1);
+	return (nb);
 }

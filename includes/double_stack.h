@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 17:39:56 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/03 14:10:36 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/03 16:49:41 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void					do_rr(t_double_stack *stack);
 void					do_rrr(t_double_stack *stack);
 void					do_rra(t_double_stack *stack);
 void					do_rrb(t_double_stack *stack);
+
+void					assign_position(t_double_stack *stack);
 
 void					sort(t_double_stack *stack);
 

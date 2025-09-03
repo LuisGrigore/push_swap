@@ -6,11 +6,12 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 15:46:58 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/03 14:12:32 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/03 17:02:43 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "double_stack.h"
+#include "node_data.h"
 #include "util.h"
 #include <stdlib.h>
 

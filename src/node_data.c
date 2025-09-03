@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   double_stack_rotate_ops.c                          :+:      :+:    :+:   */
+/*   node_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/30 15:50:12 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/03 20:57:07 by lgrigore         ###   ########.fr       */
+/*   Created: 2025/09/03 16:43:44 by lgrigore          #+#    #+#             */
+/*   Updated: 2025/09/03 16:45:27 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "double_stack.h"
 #include "node_data.h"
-#include "util.h"
 #include <stdlib.h>
 
-void	do_ra(t_double_stack *double_stack)
+t_node_data	*new_node_data(int value)
 {
-	rotate(double_stack->a);
-	assign_position(double_stack);
-	ft_putstr("ra\n");
+	t_node_data	*data;
+
+	data = malloc(sizeof(t_node_data));
+	if (!data)
+		return (NULL);
+	data->value = value;
+	data->index = 0;
+	data->position = 0;
+	return (data);
 }
 
-void	do_rb(t_double_stack *double_stack)
+void	free_node_data(void *node_data)
 {
-	rotate(double_stack->b);
-	assign_position(double_stack);
-	ft_putstr("rb\n");
-}
-
-void	do_rr(t_double_stack *double_stack)
-{
-	rotate(double_stack->a);
-	rotate(double_stack->b);
-	assign_position(double_stack);
-	ft_putstr("rr\n");
+	free((t_node_data *)node_data);
 }
