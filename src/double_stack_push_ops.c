@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves_push.c                                       :+:      :+:    :+:   */
+/*   double_stack_push_ops.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 15:18:25 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/01 16:10:40 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:42:46 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_putstr.h"
-#include "moves.h"
-#include <stdlib.h>
+#include "double_stack.h"
+#include "util.h"
 
-static void	push(t_stack **src, t_stack **dest)
+void	do_pa(t_double_stack *double_stack)
 {
-	t_stack	*tmp;
-
-	if (*src == NULL)
-		return ;
-	tmp = (*src)->next;
-	(*src)->next = *dest;
-	*dest = *src;
-	*src = tmp;
-}
-
-void	do_pa(t_stack **stack_a, t_stack **stack_b)
-{
-	push(stack_b, stack_a);
+	move_head(double_stack->b, double_stack->a);
 	ft_putstr("pa\n");
 }
 
-void	do_pb(t_stack **stack_a, t_stack **stack_b)
+void	do_pb(t_double_stack *double_stack)
 {
-	push(stack_a, stack_b);
+	move_head(double_stack->a, double_stack->b);
 	ft_putstr("pb\n");
 }

@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.h                                             :+:      :+:    :+:   */
+/*   double_stack_swap_ops.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/30 15:06:39 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/08/30 15:22:55 by lgrigore         ###   ########.fr       */
+/*   Created: 2025/08/30 15:46:58 by lgrigore          #+#    #+#             */
+/*   Updated: 2025/09/03 14:12:32 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SORT_H
-# define SORT_H
+#include "double_stack.h"
+#include "util.h"
+#include <stdlib.h>
 
-# include "stack.h"
+void	do_sa(t_double_stack *double_stack)
+{
+	swap_front(double_stack->a);
+	ft_putstr("sa\n");
+}
 
-int		is_sorted(t_stack *stack);
-void	sort(t_stack **stack, int size);
+void	do_sb(t_double_stack *double_stack)
+{
+	swap_front(double_stack);
+	ft_putstr("sb\n");
+}
 
-#endif
+void	do_ss(t_double_stack *double_stack)
+{
+	swap_front(double_stack);
+	swap_front(double_stack);
+	ft_putstr("ss\n");
+}

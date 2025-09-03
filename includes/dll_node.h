@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.h                                            :+:      :+:    :+:   */
+/*   dll_node.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 15:01:55 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/01 16:44:03 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/03 15:12:19 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_H
-# define STACK_H
+#ifndef DLL_NODE_H
+# define DLL_NODE_H
 
-typedef struct s_stack
+typedef struct s_dll_node
 {
-	int				value;
-	int				index;
-	int				position;
-	int				target;
-	int				cost_a;
-	int				cost_b;
-	struct s_stack	*next;
-}					t_stack;
+	int					value;
+	int					index;
+	int					position;
+	struct s_dll_node	*next;
+	struct s_dll_node	*prev;
+}						t_dll_node;
 
-t_stack				*get_stack_tail(t_stack *stack);
-void				free_stack(t_stack **stack);
-t_stack				*new_stack_from_char_values(char **values, int size);
+t_dll_node				*new_node(int value);
+void					free_node(t_dll_node *node);
+int get_cost(t_dll_node *node, int list_size);
 
 #endif

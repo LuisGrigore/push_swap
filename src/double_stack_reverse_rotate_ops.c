@@ -1,49 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves_reverse_rotate.c                             :+:      :+:    :+:   */
+/*   double_stack_reverse_rotate_ops.c                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 15:54:40 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/01 15:13:14 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:11:49 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "moves.h"
+#include "double_stack.h"
+#include "util.h"
 #include <stdlib.h>
 
-static void	rev_rotate(t_stack **stack)
+void	do_rra(t_double_stack *double_stack)
 {
-	t_stack	*tail;
-	t_stack	*before_tail;
-
-	if (!stack || !*stack || !(*stack)->next)
-		return ;
-	before_tail = *stack;
-	while (before_tail->next && before_tail->next->next)
-		before_tail = before_tail->next;
-	tail = before_tail->next;
-	tail->next = *stack;
-	*stack = tail;
-	before_tail->next = NULL;
-}
-
-void	do_rra(t_stack **stack_a)
-{
-	rev_rotate(stack_a);
+	reverse_rotate(double_stack->a);
 	ft_putstr("rra\n");
 }
 
-void	do_rrb(t_stack **stack_b)
+void	do_rrb(t_double_stack *double_stack)
 {
-	rev_rotate(stack_b);
+	reverse_rotate(double_stack->b);
 	ft_putstr("rrb\n");
 }
 
-void	do_rrr(t_stack **stack_a, t_stack **stack_b)
+void	do_rrr(t_double_stack *double_stack)
 {
-	rev_rotate(stack_a);
-	rev_rotate(stack_b);
+	reverse_rotate(double_stack->a);
+	reverse_rotate(double_stack->b);
 	ft_putstr("rrr\n");
 }
