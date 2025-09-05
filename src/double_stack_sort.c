@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 15:02:54 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/05 13:46:37 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 15:17:49 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,10 @@ static void	tiny_sort(t_double_stack *stack)
 		do_ra(stack);
 	else if (data_second->index == highest)
 		do_rra(stack);
+	data_head = (t_node_data *)stack->a->head->data;
+	data_second = (t_node_data *)stack->a->head->next->data;
 	if (data_head->index > data_second->index)
 		do_sa(stack);
-}
-
-static void	set_b(t_double_stack *stack)
-{
-	while (stack->a->size > 3)
-	{
-		do_pb(stack);
-	}
 }
 
 static int	get_cost_to_top(int pos, int size)
@@ -170,7 +164,8 @@ static void	big_sort(t_double_stack *stack)
 {
 	t_dll_node *current;
 	t_node_data *current_data;
-	set_b(stack);
+	while (stack->a->size > 3)
+		do_pb(stack);
 	tiny_sort(stack);
 	while (stack->b->size > 0)
 	{
@@ -180,13 +175,28 @@ static void	big_sort(t_double_stack *stack)
 	current_data = (t_node_data *) current->data;
 	while(current_data->index != 0)
 	{
-		
-		if (current_data->index < stack->a->size/2)
-			do_rra(stack);
-		else
-			do_ra(stack);
-		current_data = (t_node_data *) stack->a->head->data;
+		current = current->next;
+		current_data = (t_node_data *) current->data;
 	}
+	int n_rotations = current_data->position;
+	if (n_rotations > stack->a->size/2)
+	{
+		n_rotations = stack->a->size - n_rotations;
+		while (n_rotations > 0)
+		{
+			do_rra(stack);
+			n_rotations--;
+		}
+	}
+	else
+	{
+		while (n_rotations > 0)
+		{
+			do_ra(stack);
+			n_rotations--;
+		}
+	}
+	
 }
 
 static int	is_sorted(t_double_stack *stack)
