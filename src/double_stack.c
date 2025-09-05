@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 17:40:42 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/05 18:18:57 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 18:23:53 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,27 +104,4 @@ void	free_double_stack(t_double_stack *ds)
 	if (ds->b)
 		free_double_link_list(ds->b, free_node_data_wrapper);
 	free(ds);
-}
-
-static void	assign_position_list(t_double_link_list *list)
-{
-	t_dll_node	*current;
-	t_node_data	*current_data;
-	int			pos;
-
-	current = list->head;
-	pos = 0;
-	while (current)
-	{
-		current_data = (t_node_data *)current->data;
-		current_data->position = pos;
-		pos++;
-		current = current->next;
-	}
-}
-
-void	assign_position(t_double_stack *stack)
-{
-	assign_position_list(stack->a);
-	assign_position_list(stack->b);
 }
