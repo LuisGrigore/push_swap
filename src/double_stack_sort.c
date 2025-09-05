@@ -71,7 +71,6 @@ static int	get_target(t_double_stack *stack, int b_idx)
 	current_a = stack->a->head;
 	target_idx = INT_MAX;
 	target_pos = 0;
-
 	while (current_a)
 	{
 		data_a = (t_node_data *)current_a->data;
@@ -84,7 +83,6 @@ static int	get_target(t_double_stack *stack, int b_idx)
 	}
 	if (target_idx != INT_MAX)
 		return (target_pos);
-
 	current_a = stack->a->head;
 	target_idx = INT_MAX;
 	while (current_a)
@@ -105,12 +103,14 @@ static void	do_cheapest(t_double_stack *stack)
 	t_dll_node	*current;
 	t_node_data	*data_b;
 	t_node_data	*data_a;
-	int			cost_a, cost_b;
-	int			best_cost_a = 0, best_cost_b = 0;
+	int			best_cost_a = 0, best_cost_b;
 	int			target_pos;
 	int			lowest_cost;
-	int			cheapest_index = -1;
+	int			cheapest_index;
 
+	int cost_a, cost_b;
+	best_cost_a = 0, best_cost_b = 0;
+	cheapest_index = -1;
 	current = stack->b->head;
 	lowest_cost = INT_MAX;
 	while (current)
@@ -119,7 +119,6 @@ static void	do_cheapest(t_double_stack *stack)
 		cost_b = get_cost_to_top(data_b->position, stack->b->size);
 		target_pos = get_target(stack, data_b->index);
 		cost_a = get_cost_to_top(target_pos, stack->a->size);
-
 		if (abs(cost_a) + abs(cost_b) < lowest_cost)
 		{
 			lowest_cost = abs(cost_a) + abs(cost_b);
@@ -129,10 +128,8 @@ static void	do_cheapest(t_double_stack *stack)
 		}
 		current = current->next;
 	}
-
 	if (cheapest_index == -1)
-		return;
-
+		return ;
 	while (((t_node_data *)stack->b->head->data)->index != cheapest_index)
 	{
 		if (best_cost_b > 0)
@@ -140,14 +137,13 @@ static void	do_cheapest(t_double_stack *stack)
 		else
 			do_rrb(stack);
 	}
-
 	target_pos = get_target(stack, cheapest_index);
 	current = stack->a->head;
-	data_a = (t_node_data *) current->data;
-	while(data_a->position != target_pos)
+	data_a = (t_node_data *)current->data;
+	while (data_a->position != target_pos)
 	{
 		current = current->next;
-		data_a = (t_node_data *) current->data;
+		data_a = (t_node_data *)current->data;
 	}
 	while (((t_node_data *)stack->a->head->data)->index != data_a->index)
 	{
@@ -156,14 +152,15 @@ static void	do_cheapest(t_double_stack *stack)
 		else
 			do_rra(stack);
 	}
-
 	do_pa(stack);
 }
 
 static void	big_sort(t_double_stack *stack)
 {
-	t_dll_node *current;
-	t_node_data *current_data;
+	t_dll_node	*current;
+	t_node_data	*current_data;
+	int			n_rotations;
+
 	while (stack->a->size > 3)
 		do_pb(stack);
 	tiny_sort(stack);
@@ -172,14 +169,14 @@ static void	big_sort(t_double_stack *stack)
 		do_cheapest(stack);
 	}
 	current = stack->a->head;
-	current_data = (t_node_data *) current->data;
-	while(current_data->index != 0)
+	current_data = (t_node_data *)current->data;
+	while (current_data->index != 0)
 	{
 		current = current->next;
-		current_data = (t_node_data *) current->data;
+		current_data = (t_node_data *)current->data;
 	}
-	int n_rotations = current_data->position;
-	if (n_rotations > stack->a->size/2)
+	n_rotations = current_data->position;
+	if (n_rotations > stack->a->size / 2)
 	{
 		n_rotations = stack->a->size - n_rotations;
 		while (n_rotations > 0)
@@ -196,7 +193,6 @@ static void	big_sort(t_double_stack *stack)
 			n_rotations--;
 		}
 	}
-	
 }
 
 static int	is_sorted(t_double_stack *stack)

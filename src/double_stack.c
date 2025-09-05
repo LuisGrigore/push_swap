@@ -17,9 +17,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static void free_node_data_wrapper(void *data)
+static void	free_node_data_wrapper(void *data)
 {
-	free_node_data((t_node_data * ) data);
+	free_node_data((t_node_data *)data);
 }
 
 t_double_stack	*new_double_stack(void)
@@ -69,7 +69,6 @@ static void	assign_index(t_double_link_list *list)
 		}
 		if (highest != NULL)
 			highest->index = current_index;
-		
 	}
 }
 

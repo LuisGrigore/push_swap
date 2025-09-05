@@ -6,13 +6,13 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 15:43:56 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/03 21:35:15 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 18:03:21 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "util.h"
-#include <unistd.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 void	ft_putstr(char *str)
 {
@@ -26,7 +26,7 @@ void	ft_putstr(char *str)
 	}
 }
 
-static int	is_digit(char c)
+int	is_digit(char c)
 {
 	return (c >= '0' && c <= '9');
 }
@@ -55,7 +55,7 @@ long int	ft_atoi(const char *str)
 	return (nb * isneg);
 }
 
-void error()
+void	error(void)
 {
 	write(2, "Error\n", 6);
 	exit(1);

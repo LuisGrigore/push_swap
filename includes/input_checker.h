@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   util.h                                             :+:      :+:    :+:   */
+/*   input_checker.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/30 15:44:39 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/05 18:03:28 by lgrigore         ###   ########.fr       */
+/*   Created: 2025/09/05 17:57:44 by lgrigore          #+#    #+#             */
+/*   Updated: 2025/09/05 18:00:18 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTIL_H
-# define UTIL_H
+#ifndef INPUT_CHECKER_H
+# define INPUT_CHECKER_H
 
-void		ft_putstr(char *str);
-long int	ft_atoi(const char *str);
-int			abs(int nb);
-int			is_digit(char c);
-void		error(void);
+int	validate_input(int argc, char *argv[]);
 
 #endif

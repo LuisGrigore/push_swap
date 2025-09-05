@@ -26,17 +26,14 @@ t_double_link_list	*new_double_link_list(void)
 	return (list);
 }
 
-
 void	free_double_link_list(t_double_link_list *list,
 		void (*free_data)(void *))
 {
-
 	if (!list)
 		return ;
-	while (list->size >0)
+	while (list->size > 0)
 	{
 		free_data(pop_front(list));
 	}
 	free(list);
 }
-

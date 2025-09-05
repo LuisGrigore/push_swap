@@ -13,7 +13,6 @@
 #include "double_link_list.h"
 #include <stdlib.h>
 
-
 void	move_head(t_double_link_list *src, t_double_link_list *dest)
 {
 	push_front(dest, pop_front(src));
