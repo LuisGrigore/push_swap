@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 19:08:30 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/05 20:19:09 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 20:30:04 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,13 @@
 #include "util.h"
 #include <limits.h>
 
-static void	move_cheapest(t_double_stack *stack, t_current_cheapest cheapest)
+static void	rotate_a_to_target(t_double_stack *stack,
+		t_current_cheapest cheapest)
 {
 	t_dll_node	*current;
 	t_node_data	*data_a;
 	int			target_pos;
 
-	while (((t_node_data *)stack->b->head->data)->index
-		!= cheapest.cheapest_index)
-	{
-		if (cheapest.costs.cost_b > 0)
-			do_rb(stack);
-		else
-			do_rrb(stack);
-	}
 	target_pos = get_target(stack, cheapest.cheapest_index);
 	current = stack->a->head;
 	data_a = (t_node_data *)current->data;
@@ -45,6 +38,25 @@ static void	move_cheapest(t_double_stack *stack, t_current_cheapest cheapest)
 		else
 			do_rra(stack);
 	}
+}
+
+static void	rotate_b_to_target(t_double_stack *stack,
+		t_current_cheapest cheapest)
+{
+	while (((t_node_data *)stack->b->head->data)->index
+		!= cheapest.cheapest_index)
+	{
+		if (cheapest.costs.cost_b > 0)
+			do_rb(stack);
+		else
+			do_rrb(stack);
+	}
+}
+
+static void	move_cheapest(t_double_stack *stack, t_current_cheapest cheapest)
+{
+	rotate_b_to_target(stack, cheapest);
+	rotate_a_to_target(stack, cheapest);
 	do_pa(stack);
 }
 

@@ -14,7 +14,6 @@
 #include "input_checker.h"
 #include "util.h"
 
-
 int	main(int argc, char **argv)
 {
 	t_double_stack	*stack;
