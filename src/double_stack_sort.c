@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 15:02:54 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/05 11:55:02 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 12:27:21 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,6 @@ static void	do_cheapest(t_double_stack *stack)
 	int			cost_a, cost_b;
 	int			best_cost_a = 0, best_cost_b = 0;
 	int			target_pos;
-	int target_index;
 	int			lowest_cost;
 	int			cheapest_index = -1;
 
