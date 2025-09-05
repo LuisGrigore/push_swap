@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 17:40:42 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/05 18:23:53 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 20:48:17 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ t_double_stack	*new_double_stack_from_str_array(char **arr, int len)
 	{
 		nb = ft_atoi(arr[i]);
 		if (nb > INT_MAX || nb < INT_MIN)
-			error();
+			error(stack);
 		push_back(stack->a, (void *)new_node_data(nb));
 		i++;
 	}

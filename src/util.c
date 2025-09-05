@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 15:43:56 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/05 18:03:21 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 20:50:27 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,10 @@ long int	ft_atoi(const char *str)
 	return (nb * isneg);
 }
 
-void	error(void)
+void	error(t_double_stack *stack)
 {
+	if (stack)
+		free_double_stack(stack);
 	write(2, "Error\n", 6);
 	exit(1);
 }

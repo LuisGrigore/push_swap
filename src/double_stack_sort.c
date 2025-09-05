@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 15:02:54 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/05 18:32:27 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 20:34:51 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "node_data.h"
 #include "tiny_sort.h"
 #include "util.h"
-#include <limits.h>
 #include <stdlib.h>
 
 static int	is_sorted(t_double_stack *stack)

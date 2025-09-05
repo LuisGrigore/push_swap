@@ -1,37 +1,52 @@
-# Compilador
-CC = gcc
+CC		= gcc
+CFLAGS	= -Wall -Wextra -Werror -I$(INC_DIR)
 
-# Flags del compilador
-CFLAGS = -Wall -Wextra -Iincludes
+SRC_DIR	= src
+INC_DIR	= includes
+OBJ_DIR	= obj
 
-# Directorios
-SRC_DIR = src
-INC_DIR = includes
-OBJ_DIR = obj
+SRCS	= $(SRC_DIR)/big_sort.c \
+		  $(SRC_DIR)/cost.c \
+		  $(SRC_DIR)/dll_node.c \
+		  $(SRC_DIR)/do_cheapest.c \
+		  $(SRC_DIR)/double_link_list_basic_ops.c \
+		  $(SRC_DIR)/double_link_list.c \
+		  $(SRC_DIR)/double_link_list_ops.c \
+		  $(SRC_DIR)/double_stack.c \
+		  $(SRC_DIR)/double_stack_position.c \
+		  $(SRC_DIR)/double_stack_push_ops.c \
+		  $(SRC_DIR)/double_stack_reverse_rotate_ops.c \
+		  $(SRC_DIR)/double_stack_rotate_ops.c \
+		  $(SRC_DIR)/double_stack_sort.c \
+		  $(SRC_DIR)/double_stack_swap_ops.c \
+		  $(SRC_DIR)/input_checker.c \
+		  $(SRC_DIR)/main.c \
+		  $(SRC_DIR)/node_data.c \
+		  $(SRC_DIR)/target.c \
+		  $(SRC_DIR)/tiny_sort.c \
+		  $(SRC_DIR)/util.c
 
-# Archivos
-SRC = $(wildcard $(SRC_DIR)/*.c)
-OBJ = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRC))
-TARGET = main
+OBJS	= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-# Regla por defecto
-all: $(TARGET)
+NAME	= push_swap
 
-# Linkeo final
-$(TARGET): $(OBJ)
+all: $(NAME)
+
+$(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
 
-# Compilar .c a .o
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Crear directorio obj si no existe
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
-# Limpiar compilados
 clean:
-	rm -rf $(OBJ_DIR) $(TARGET)
+	rm -rf $(OBJ_DIR)
 
-# Limpiar y recompilar
-re: clean all
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re

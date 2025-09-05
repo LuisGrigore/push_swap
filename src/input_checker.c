@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:58:25 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/05 20:17:49 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 20:57:34 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int	validate_input(int argc, char *argv[])
 {
 	int	*num;
 
+	if (argc == 1)
+		return (0);
 	num = malloc((argc - 1) * sizeof(int));
 	if (!num)
 	{

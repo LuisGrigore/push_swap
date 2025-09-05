@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 18:25:12 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/05 19:36:34 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 20:33:53 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "node_data.h"
 #include "tiny_sort.h"
 #include "util.h"
-#include <limits.h>
 
 static void	rotate_a(t_double_stack *stack, int n_rotations)
 {
