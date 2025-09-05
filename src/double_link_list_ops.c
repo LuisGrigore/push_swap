@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 14:17:44 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/05 18:11:48 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 18:16:40 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,13 @@ void	reverse_rotate(t_double_link_list *list)
 
 void	swap_front(t_double_link_list *list)
 {
-	void *first;
-	void *second;
+	void	*first;
+	void	*second;
 
 	if (!list || list->size < 2)
 		return ;
 	first = pop_front(list);
 	second = pop_front(list);
-
 	push_front(list, first);
 	push_front(list, second);
 }

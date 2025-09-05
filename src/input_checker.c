@@ -34,8 +34,8 @@ static int	is_valid_int(const char *str)
 
 static int	has_dup(int *arr, int n)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < n)
@@ -55,7 +55,7 @@ static int	has_dup(int *arr, int n)
 int	validate_input(int argc, char *argv[])
 {
 	int	*num;
-	int i;
+	int	i;
 
 	num = malloc((argc - 1) * sizeof(int));
 	if (!num)

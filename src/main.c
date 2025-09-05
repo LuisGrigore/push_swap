@@ -25,7 +25,7 @@
 // 	{
 // 		current_data = (t_node_data *)current->data;
 // 		printf("%d[%d][%d]\n", current_data->value, current_data->index,
-			// current_data->position);
+// current_data->position);
 // 		current = current->next;
 // 	}
 // }

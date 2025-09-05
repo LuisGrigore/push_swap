@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 14:16:28 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/05 18:11:37 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 18:19:27 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ void	*pop_front(t_double_link_list *list)
 
 void	*pop_back(t_double_link_list *list)
 {
-	t_dll_node *tmp;
-	void *data;
+	t_dll_node	*tmp;
+	void		*data;
 
 	if (list->size == 0)
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 15:02:54 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/05 18:13:17 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 18:18:28 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,13 +102,16 @@ static void	do_cheapest(t_double_stack *stack)
 	t_dll_node	*current;
 	t_node_data	*data_b;
 	t_node_data	*data_a;
-	int			best_cost_a = 0, best_cost_b;
+	int			best_cost_a;
+	int			best_cost_b;
 	int			target_pos;
 	int			lowest_cost;
 	int			cheapest_index;
+	int			cost_a;
+	int			cost_b;
 
-	int cost_a, cost_b;
-	best_cost_a = 0, best_cost_b = 0;
+	best_cost_a = 0;
+	best_cost_b = 0;
 	cheapest_index = -1;
 	current = stack->b->head;
 	lowest_cost = INT_MAX;

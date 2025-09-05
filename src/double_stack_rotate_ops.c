@@ -13,7 +13,6 @@
 #include "double_stack.h"
 #include "util.h"
 
-
 void	do_ra(t_double_stack *double_stack)
 {
 	rotate(double_stack->a);
