@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 15:02:54 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/05 15:17:49 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 18:13:17 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "node_data.h"
 #include "util.h"
 #include <limits.h>
-#include <stdio.h>
 #include <stdlib.h>
 
 static int	find_highest_index(t_double_link_list *list)

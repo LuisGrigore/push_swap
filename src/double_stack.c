@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 17:40:42 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/05 13:47:35 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 18:13:58 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "node_data.h"
 #include "util.h"
 #include <limits.h>
-#include <stdio.h>
 #include <stdlib.h>
 
 static void	free_node_data_wrapper(void *data)

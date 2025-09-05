@@ -6,14 +6,13 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 15:50:12 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/03 20:57:07 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 18:12:49 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "double_stack.h"
-#include "node_data.h"
 #include "util.h"
-#include <stdlib.h>
+
 
 void	do_ra(t_double_stack *double_stack)
 {

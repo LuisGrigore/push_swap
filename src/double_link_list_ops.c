@@ -6,12 +6,11 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 14:17:44 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/03 20:07:36 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 18:11:48 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "double_link_list.h"
-#include <stdlib.h>
 
 void	move_head(t_double_link_list *src, t_double_link_list *dest)
 {

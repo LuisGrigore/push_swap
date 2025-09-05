@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 15:53:46 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/03 21:14:44 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 18:10:58 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ void	free_node(t_dll_node *node)
 {
 	if (!node)
 		return ;
-	free(node); // liberar el nodo en sí
+	free(node);
 }

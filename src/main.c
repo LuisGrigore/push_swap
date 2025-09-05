@@ -6,13 +6,13 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 14:59:14 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/05 18:04:30 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 18:14:52 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "double_stack.h"
 #include "input_checker.h"
-#include "node_data.h"
+//#include "node_data.h"
 #include "util.h"
 
 // void	print_list(t_double_link_list *list)

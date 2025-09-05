@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 14:16:28 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/03 21:14:38 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 18:11:37 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	*pop_front(t_double_link_list *list)
 	void		*data;
 
 	if (list->size == 0)
-		return (0); // o error
+		return (0);
 	tmp = list->head;
 	data = tmp->data;
 	list->head = tmp->next;
@@ -70,7 +70,7 @@ void	*pop_back(t_double_link_list *list)
 	void *data;
 
 	if (list->size == 0)
-		return (0); // o error
+		return (0);
 	tmp = list->tail;
 	data = tmp->data;
 	list->tail = tmp->prev;
