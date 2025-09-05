@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 15:02:54 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/05 12:43:35 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 13:46:37 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
-
 
 static int	find_highest_index(t_double_link_list *list)
 {
@@ -79,7 +78,6 @@ static int	get_target(t_double_stack *stack, int b_idx)
 	target_idx = INT_MAX;
 	target_pos = 0;
 
-	// Buscar el índice más pequeño mayor que b_idx
 	while (current_a)
 	{
 		data_a = (t_node_data *)current_a->data;
@@ -141,7 +139,6 @@ static void	do_cheapest(t_double_stack *stack)
 	if (cheapest_index == -1)
 		return;
 
-	// mover el nodo cheapest a la cabeza de B
 	while (((t_node_data *)stack->b->head->data)->index != cheapest_index)
 	{
 		if (best_cost_b > 0)
@@ -150,7 +147,6 @@ static void	do_cheapest(t_double_stack *stack)
 			do_rrb(stack);
 	}
 
-	// colocar el target en A en la posición correcta
 	target_pos = get_target(stack, cheapest_index);
 	current = stack->a->head;
 	data_a = (t_node_data *) current->data;
@@ -167,7 +163,6 @@ static void	do_cheapest(t_double_stack *stack)
 			do_rra(stack);
 	}
 
-	// finalmente pushear de B a A
 	do_pa(stack);
 }
 

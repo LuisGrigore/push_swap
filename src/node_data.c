@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 16:43:44 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/03 16:45:27 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 13:46:22 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_node_data	*new_node_data(int value)
 	return (data);
 }
 
-void	free_node_data(void *node_data)
+void	free_node_data(t_node_data *node_data)
 {
-	free((t_node_data *)node_data);
+	free(node_data);
 }

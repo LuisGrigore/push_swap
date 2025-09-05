@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 17:40:42 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/03 21:36:17 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 13:47:35 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
+
+static void free_node_data_wrapper(void *data)
+{
+	free_node_data((t_node_data * ) data);
+}
 
 t_double_stack	*new_double_stack(void)
 {
@@ -29,9 +34,9 @@ t_double_stack	*new_double_stack(void)
 	if (!ds->a || !ds->b)
 	{
 		if (ds->a)
-			free_double_link_list(ds->a, free_node_data);
+			free_double_link_list(ds->a, free_node_data_wrapper);
 		if (ds->b)
-			free_double_link_list(ds->b, free_node_data);
+			free_double_link_list(ds->b, free_node_data_wrapper);
 		free(ds);
 		return (NULL);
 	}
@@ -97,9 +102,9 @@ void	free_double_stack(t_double_stack *ds)
 	if (!ds)
 		return ;
 	if (ds->a)
-		free_double_link_list(ds->a, free_node_data);
+		free_double_link_list(ds->a, free_node_data_wrapper);
 	if (ds->b)
-		free_double_link_list(ds->b, free_node_data);
+		free_double_link_list(ds->b, free_node_data_wrapper);
 	free(ds);
 }
 
