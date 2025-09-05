@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 15:02:54 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/05 12:27:21 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 12:43:35 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,9 +144,6 @@ static void	do_cheapest(t_double_stack *stack)
 	// mover el nodo cheapest a la cabeza de B
 	while (((t_node_data *)stack->b->head->data)->index != cheapest_index)
 	{
-		if (best_cost_b == 0)
-			break;
-		
 		if (best_cost_b > 0)
 			do_rb(stack);
 		else
@@ -164,8 +161,6 @@ static void	do_cheapest(t_double_stack *stack)
 	}
 	while (((t_node_data *)stack->a->head->data)->index != data_a->index)
 	{
-		if (best_cost_a == 0)
-			break;
 		if (best_cost_a > 0)
 			do_ra(stack);
 		else
