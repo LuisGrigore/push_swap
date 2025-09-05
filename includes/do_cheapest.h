@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   big_sort.h                                         :+:      :+:    :+:   */
+/*   do_cheapest.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/05 18:25:50 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/05 19:11:31 by lgrigore         ###   ########.fr       */
+/*   Created: 2025/09/05 19:08:46 by lgrigore          #+#    #+#             */
+/*   Updated: 2025/09/05 19:11:36 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BIG_SORT_H
-# define BIG_SORT_H
+#ifndef DO_CHEAPEST_H
+# define DO_CHEAPEST_H
 
 # include "double_stack.h"
 
-void	big_sort(t_double_stack *stack);
+typedef struct s_cost
+{
+	int		cost_a;
+	int		cost_b;
+}			t_cost;
+
+typedef struct s_current_cheapest
+{
+	t_cost	costs;
+	int		cheapest_index;
+}			t_current_cheapest;
+
+void		do_cheapest(t_double_stack *stack);
 
 #endif
