@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:58:25 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/05 18:09:53 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 20:17:49 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,10 @@ static int	has_dup(int *arr, int n)
 	return (0);
 }
 
-int	validate_input(int argc, char *argv[])
+static int	are_ints(int *num, char *argv[], int argc)
 {
-	int	*num;
 	int	i;
 
-	num = malloc((argc - 1) * sizeof(int));
-	if (!num)
-	{
-		return (0);
-	}
 	i = 1;
 	while (i < argc)
 	{
@@ -73,6 +67,20 @@ int	validate_input(int argc, char *argv[])
 		num[i - 1] = ft_atoi(argv[i]);
 		i++;
 	}
+	return (1);
+}
+
+int	validate_input(int argc, char *argv[])
+{
+	int	*num;
+
+	num = malloc((argc - 1) * sizeof(int));
+	if (!num)
+	{
+		return (0);
+	}
+	if (!are_ints(num, argv, argc))
+		return (0);
 	if (has_dup(num, argc - 1))
 	{
 		free(num);

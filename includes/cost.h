@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_cheapest.h                                      :+:      :+:    :+:   */
+/*   cost.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/05 19:08:46 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/05 19:36:05 by lgrigore         ###   ########.fr       */
+/*   Created: 2025/09/05 19:19:31 by lgrigore          #+#    #+#             */
+/*   Updated: 2025/09/05 19:35:22 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DO_CHEAPEST_H
-# define DO_CHEAPEST_H
+#ifndef COST_H
+# define COST_H
 
-# include "cost.h"
 # include "double_stack.h"
 
-typedef struct s_current_cheapest
+typedef struct s_cost
 {
-	t_cost	costs;
-	int		cheapest_index;
-}			t_current_cheapest;
+	int	cost_a;
+	int	cost_b;
+}		t_cost;
 
-void		do_cheapest(t_double_stack *stack);
+t_cost	get_costs(t_double_stack *stack, int position_b, int index_b);
 
 #endif

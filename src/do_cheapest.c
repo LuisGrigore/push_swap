@@ -6,58 +6,15 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 19:08:30 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/05 19:14:07 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 20:19:09 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "do_cheapest.h"
-#include "util.h"
 #include "node_data.h"
+#include "target.h"
+#include "util.h"
 #include <limits.h>
-
-static int	get_cost_to_top(int pos, int size)
-{
-	if (pos > size / 2)
-		return ((size - pos) * -1);
-	return (pos);
-}
-
-static int	get_target(t_double_stack *stack, int b_idx)
-{
-	t_dll_node	*current_a;
-	t_node_data	*data_a;
-	int			target_idx;
-	int			target_pos;
-
-	current_a = stack->a->head;
-	target_idx = INT_MAX;
-	target_pos = 0;
-	while (current_a)
-	{
-		data_a = (t_node_data *)current_a->data;
-		if (data_a->index > b_idx && data_a->index < target_idx)
-		{
-			target_idx = data_a->index;
-			target_pos = data_a->position;
-		}
-		current_a = current_a->next;
-	}
-	if (target_idx != INT_MAX)
-		return (target_pos);
-	current_a = stack->a->head;
-	target_idx = INT_MAX;
-	while (current_a)
-	{
-		data_a = (t_node_data *)current_a->data;
-		if (data_a->index < target_idx)
-		{
-			target_idx = data_a->index;
-			target_pos = data_a->position;
-		}
-		current_a = current_a->next;
-	}
-	return (target_pos);
-}
 
 static void	move_cheapest(t_double_stack *stack, t_current_cheapest cheapest)
 {
@@ -105,9 +62,7 @@ void	do_cheapest(t_double_stack *stack)
 	while (current)
 	{
 		data_b = (t_node_data *)current->data;
-		costs.cost_b = get_cost_to_top(data_b->position, stack->b->size);
-		costs.cost_a = get_cost_to_top(get_target(stack, data_b->index),
-				stack->a->size);
+		costs = get_costs(stack, data_b->position, data_b->index);
 		if (abs(costs.cost_a) + abs(costs.cost_b) < lowest_cost)
 		{
 			lowest_cost = abs(costs.cost_a) + abs(costs.cost_b);

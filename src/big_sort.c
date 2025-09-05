@@ -6,11 +6,12 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 18:25:12 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/05 19:09:16 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 19:36:34 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "big_sort.h"
+#include "do_cheapest.h"
 #include "node_data.h"
 #include "tiny_sort.h"
 #include "util.h"
