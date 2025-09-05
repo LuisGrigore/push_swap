@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 14:59:14 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/03 21:36:05 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 11:56:09 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ void	print_list(t_double_link_list *list)
 int	main(int argc, char **argv)
 {
 	t_double_stack	*stack;
-	int				size;
 
 	if (!validar_argumentos(argc, argv))
 		error();

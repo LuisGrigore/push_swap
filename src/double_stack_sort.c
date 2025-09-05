@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 15:02:54 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/03 21:09:35 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 11:55:02 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,12 +112,13 @@ static void	do_cheapest(t_double_stack *stack)
 {
 	t_dll_node	*current;
 	t_node_data	*data_b;
+	t_node_data	*data_a;
 	int			cost_a, cost_b;
 	int			best_cost_a = 0, best_cost_b = 0;
 	int			target_pos;
+	int target_index;
 	int			lowest_cost;
-	t_dll_node	*cheapest = NULL;
-
+	int			cheapest_index = -1;
 
 	current = stack->b->head;
 	lowest_cost = INT_MAX;
@@ -133,17 +134,20 @@ static void	do_cheapest(t_double_stack *stack)
 			lowest_cost = abs(cost_a) + abs(cost_b);
 			best_cost_a = cost_a;
 			best_cost_b = cost_b;
-			cheapest = current;
+			cheapest_index = data_b->index;
 		}
 		current = current->next;
 	}
 
-	if (!cheapest)
+	if (cheapest_index == -1)
 		return;
 
 	// mover el nodo cheapest a la cabeza de B
-	while (stack->b->head != cheapest)
+	while (((t_node_data *)stack->b->head->data)->index != cheapest_index)
 	{
+		if (best_cost_b == 0)
+			break;
+		
 		if (best_cost_b > 0)
 			do_rb(stack);
 		else
@@ -151,8 +155,18 @@ static void	do_cheapest(t_double_stack *stack)
 	}
 
 	// colocar el target en A en la posición correcta
-	while (((t_node_data *)stack->a->head->data)->position != get_target(stack, ((t_node_data *)cheapest->data)->index))
+	target_pos = get_target(stack, cheapest_index);
+	current = stack->a->head;
+	data_a = (t_node_data *) current->data;
+	while(data_a->position != target_pos)
 	{
+		current = current->next;
+		data_a = (t_node_data *) current->data;
+	}
+	while (((t_node_data *)stack->a->head->data)->index != data_a->index)
+	{
+		if (best_cost_a == 0)
+			break;
 		if (best_cost_a > 0)
 			do_ra(stack);
 		else

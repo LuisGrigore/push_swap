@@ -6,7 +6,7 @@
 /*   By: lgrigore <lgrigore@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 17:34:27 by lgrigore          #+#    #+#             */
-/*   Updated: 2025/09/03 21:10:50 by lgrigore         ###   ########.fr       */
+/*   Updated: 2025/09/05 11:30:11 by lgrigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,12 @@ static void	free_node_list(t_dll_node *node, void (*free_data)(void *))
 void	free_double_link_list(t_double_link_list *list,
 		void (*free_data)(void *))
 {
-	t_dll_node	*current;
-	t_dll_node	*next;
 
 	if (!list)
 		return ;
-	current = list->head;
-	while (current)
+	while (list->size >0)
 	{
-		next = current->next;
-		free_node_list(current, free_data);
-		current = next;
+		free_data(pop_front(list));
 	}
 	free(list);
 }
